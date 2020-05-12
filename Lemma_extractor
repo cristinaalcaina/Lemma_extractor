@@ -1,0 +1,20 @@
+denominal = open("denominal.txt", "r")
+denominal_list = denominal.readlines() 
+
+verb_file = open("verbs.txt", "r")
+output = open("denominal_frecuency_1.txt","a+")
+output.truncate(0)
+
+denominal_list = [x[:-1] for x in denominal_list]
+verbs = [x[:-1] for x in verb_file]
+
+for i in denominal_list:
+    for v in verbs:
+        [verb, frec] = v.split("\t")
+        if i == verb:
+            if frec == 1:
+                output.write(i + " " + frec+ "\n")
+
+verb_file.close()
+denominal.close()
+output.close()
